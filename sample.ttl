@@ -1,0 +1,150 @@
+@prefix ex: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Table 1: Authors
+ex:Authors rdf:type ex:Table ;
+    ex:tableName "Authors" .
+
+ex:author_id rdf:type ex:Column ;
+    ex:columnName "author_id" ;
+    ex:columnOf ex:Authors .
+
+ex:author_name rdf:type ex:Column ;
+    ex:columnName "author_name" ;
+    ex:columnOf ex:Authors .
+
+ex:nationality rdf:type ex:Column ;
+    ex:columnName "nationality" ;
+    ex:columnOf ex:Authors .
+
+ex:birth_year rdf:type ex:Column ;
+    ex:columnName "birth_year" ;
+    ex:columnOf ex:Authors .
+
+
+# Table 2: Books
+ex:Books rdf:type ex:Table ;
+    ex:tableName "Books" .
+
+ex:book_id rdf:type ex:Column ;
+    ex:columnName "book_id" ;
+    ex:columnOf ex:Books .
+
+ex:title rdf:type ex:Column ;
+    ex:columnName "title" ;
+    ex:columnOf ex:Books .
+
+ex:author_id rdf:type ex:Column ;
+    ex:columnName "author_id" ;
+    ex:columnOf ex:Books .
+
+ex:genre rdf:type ex:Column ;
+    ex:columnName "genre" ;
+    ex:columnOf ex:Books .
+
+ex:published_year rdf:type ex:Column ;
+    ex:columnName "published_year" ;
+    ex:columnOf ex:Books .
+
+
+# Table 3: Members
+ex:Members rdf:type ex:Table ;
+    ex:tableName "Members" .
+
+ex:member_id rdf:type ex:Column ;
+    ex:columnName "member_id" ;
+    ex:columnOf ex:Members .
+
+ex:member_name rdf:type ex:Column ;
+    ex:columnName "member_name" ;
+    ex:columnOf ex:Members .
+
+ex:email rdf:type ex:Column ;
+    ex:columnName "email" ;
+    ex:columnOf ex:Members .
+
+ex:join_date rdf:type ex:Column ;
+    ex:columnName "join_date" ;
+    ex:columnOf ex:Members .
+
+
+# Table 4: Loans
+ex:Loans rdf:type ex:Table ;
+    ex:tableName "Loans" .
+
+ex:loan_id rdf:type ex:Column ;
+    ex:columnName "loan_id" ;
+    ex:columnOf ex:Loans .
+
+ex:book_id rdf:type ex:Column ;
+    ex:columnName "book_id" ;
+    ex:columnOf ex:Loans .
+
+ex:member_id rdf:type ex:Column ;
+    ex:columnName "member_id" ;
+    ex:columnOf ex:Loans .
+
+ex:loan_date rdf:type ex:Column ;
+    ex:columnName "loan_date" ;
+    ex:columnOf ex:Loans .
+
+ex:due_date rdf:type ex:Column ;
+    ex:columnName "due_date" ;
+    ex:columnOf ex:Loans .
+
+
+# Table 5: Reviews
+ex:Reviews rdf:type ex:Table ;
+    ex:tableName "Reviews" .
+
+ex:review_id rdf:type ex:Column ;
+    ex:columnName "review_id" ;
+    ex:columnOf ex:Reviews .
+
+ex:book_id rdf:type ex:Column ;
+    ex:columnName "book_id" ;
+    ex:columnOf ex:Reviews .
+
+ex:member_id rdf:type ex:Column ;
+    ex:columnName "member_id" ;
+    ex:columnOf ex:Reviews .
+
+ex:rating rdf:type ex:Column ;
+    ex:columnName "rating" ;
+    ex:columnOf ex:Reviews .
+
+ex:review_text rdf:type ex:Column ;
+    ex:columnName "review_text" ;
+    ex:columnOf ex:Reviews .
+
+
+# Table 6: Publishers
+ex:Publishers rdf:type ex:Table ;
+    ex:tableName "Publishers" .
+
+ex:publisher_id rdf:type ex:Column ;
+    ex:columnName "publisher_id" ;
+    ex:columnOf ex:Publishers .
+
+ex:publisher_name rdf:type ex:Column ;
+    ex:columnName "publisher_name" ;
+    ex:columnOf ex:Publishers .
+
+ex:headquarters_location rdf:type ex:Column ;
+    ex:columnName "headquarters_location" ;
+    ex:columnOf ex:Publishers .
+
+ex:establishment_year rdf:type ex:Column ;
+    ex:columnName "establishment_year" ;
+    ex:columnOf ex:Publishers .
+
+# Foreign Key Relations
+ex:author_id ex:foreignKeyOf ex:Books .
+ex:author_id ex:foreignKeyOf ex:Reviews .
+
+ex:book_id ex:foreignKeyOf ex:Loans .
+ex:book_id ex:foreignKeyOf ex:Reviews .
+
+ex:member_id ex:foreignKeyOf ex:Loans .
+ex:member_id ex:foreignKeyOf ex:Reviews .
