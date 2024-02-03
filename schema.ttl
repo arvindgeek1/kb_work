@@ -1,0 +1,208 @@
+@prefix ex: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:author_name a ex:Column ;
+    rdfs:label "author_name" ;
+    ex:belongsTo ex:author_id,
+        ex:birth_year,
+        ex:nationality ;
+    ex:columnOf ex:Authors .
+
+ex:birth_year a ex:Column ;
+    rdfs:label "birth_year" ;
+    ex:belongsTo ex:author_id,
+        ex:author_name,
+        ex:nationality ;
+    ex:columnOf ex:Authors .
+
+ex:email a ex:Column ;
+    rdfs:label "email" ;
+    ex:belongsTo ex:join_date,
+        ex:member_id,
+        ex:member_name ;
+    ex:columnOf ex:Members .
+
+ex:establishment_year a ex:Column ;
+    rdfs:label "establishment_year" ;
+    ex:belongsTo ex:headquarters_location,
+        ex:publisher_id,
+        ex:publisher_name ;
+    ex:columnOf ex:Publishers .
+
+ex:headquarters_location a ex:Column ;
+    rdfs:label "headquarters_location" ;
+    ex:belongsTo ex:establishment_year,
+        ex:publisher_id,
+        ex:publisher_name ;
+    ex:columnOf ex:Publishers .
+
+ex:join_date a ex:Column ;
+    rdfs:label "join_date" ;
+    ex:belongsTo ex:email,
+        ex:member_id,
+        ex:member_name ;
+    ex:columnOf ex:Members .
+
+ex:member_name a ex:Column ;
+    rdfs:label "member_name" ;
+    ex:belongsTo ex:email,
+        ex:join_date,
+        ex:member_id ;
+    ex:columnOf ex:Members .
+
+ex:nationality a ex:Column ;
+    rdfs:label "nationality" ;
+    ex:belongsTo ex:author_id,
+        ex:author_name,
+        ex:birth_year ;
+    ex:columnOf ex:Authors .
+
+ex:publisher_id a ex:Column ;
+    rdfs:label "publisher_id" ;
+    ex:belongsTo ex:establishment_year,
+        ex:headquarters_location,
+        ex:publisher_name ;
+    ex:columnOf ex:Publishers .
+
+ex:publisher_name a ex:Column ;
+    rdfs:label "publisher_name" ;
+    ex:belongsTo ex:establishment_year,
+        ex:headquarters_location,
+        ex:publisher_id ;
+    ex:columnOf ex:Publishers .
+
+ex:Authors a ex:Table ;
+    rdfs:label "Authors" .
+
+ex:Members a ex:Table ;
+    rdfs:label "Members" .
+
+ex:Publishers a ex:Table ;
+    rdfs:label "Publishers" .
+
+ex:due_date a ex:Column ;
+    rdfs:label "due_date" ;
+    ex:belongsTo ex:book_id,
+        ex:loan_date,
+        ex:loan_id,
+        ex:member_id ;
+    ex:columnOf ex:Loans .
+
+ex:genre a ex:Column ;
+    rdfs:label "genre" ;
+    ex:belongsTo ex:author_id,
+        ex:book_id,
+        ex:published_year,
+        ex:title ;
+    ex:columnOf ex:Books .
+
+ex:loan_date a ex:Column ;
+    rdfs:label "loan_date" ;
+    ex:belongsTo ex:book_id,
+        ex:due_date,
+        ex:loan_id,
+        ex:member_id ;
+    ex:columnOf ex:Loans .
+
+ex:loan_id a ex:Column ;
+    rdfs:label "loan_id" ;
+    ex:belongsTo ex:book_id,
+        ex:due_date,
+        ex:loan_date,
+        ex:member_id ;
+    ex:columnOf ex:Loans .
+
+ex:published_year a ex:Column ;
+    rdfs:label "published_year" ;
+    ex:belongsTo ex:author_id,
+        ex:book_id,
+        ex:genre,
+        ex:title ;
+    ex:columnOf ex:Books .
+
+ex:rating a ex:Column ;
+    rdfs:label "rating" ;
+    ex:belongsTo ex:book_id,
+        ex:member_id,
+        ex:review_id,
+        ex:review_text ;
+    ex:columnOf ex:Reviews .
+
+ex:review_id a ex:Column ;
+    rdfs:label "review_id" ;
+    ex:belongsTo ex:book_id,
+        ex:member_id,
+        ex:rating,
+        ex:review_text ;
+    ex:columnOf ex:Reviews .
+
+ex:review_text a ex:Column ;
+    rdfs:label "review_text" ;
+    ex:belongsTo ex:book_id,
+        ex:member_id,
+        ex:rating,
+        ex:review_id ;
+    ex:columnOf ex:Reviews .
+
+ex:title a ex:Column ;
+    rdfs:label "title" ;
+    ex:belongsTo ex:author_id,
+        ex:book_id,
+        ex:genre,
+        ex:published_year ;
+    ex:columnOf ex:Books .
+
+ex:Books a ex:Table ;
+    rdfs:label "Books" .
+
+ex:Loans a ex:Table ;
+    rdfs:label "Loans" .
+
+ex:Reviews a ex:Table ;
+    rdfs:label "Reviews" .
+
+ex:author_id a ex:Column ;
+    rdfs:label "author_id" ;
+    ex:belongsTo ex:author_name,
+        ex:birth_year,
+        ex:book_id,
+        ex:genre,
+        ex:nationality,
+        ex:published_year,
+        ex:title ;
+    ex:columnOf ex:Authors,
+        ex:Books .
+
+ex:member_id a ex:Column ;
+    rdfs:label "member_id" ;
+    ex:belongsTo ex:book_id,
+        ex:due_date,
+        ex:email,
+        ex:join_date,
+        ex:loan_date,
+        ex:loan_id,
+        ex:member_name,
+        ex:rating,
+        ex:review_id,
+        ex:review_text ;
+    ex:columnOf ex:Loans,
+        ex:Members,
+        ex:Reviews .
+
+ex:book_id a ex:Column ;
+    rdfs:label "book_id" ;
+    ex:belongsTo ex:author_id,
+        ex:due_date,
+        ex:genre,
+        ex:loan_date,
+        ex:loan_id,
+        ex:member_id,
+        ex:published_year,
+        ex:rating,
+        ex:review_id,
+        ex:review_text,
+        ex:title ;
+    ex:columnOf ex:Books,
+        ex:Loans,
+        ex:Reviews .
+
