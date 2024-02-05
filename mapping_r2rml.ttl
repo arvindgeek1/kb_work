@@ -1,0 +1,341 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+
+<urn:MAPPING-ID1> a rr:TriplesMap;
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:template "http://www.w3.org/ns/r2rml/books/book_id={book_id}";
+      rr:class <http://www.w3.org/ns/r2rml/books>;
+      rr:termType rr:IRI
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT * FROM \"books\""
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:integer;
+          rr:column "published_year";
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/books#published_year>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:column "genre";
+          rr:datatype xsd:string;
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/books#genre>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:integer;
+          rr:column "author_id";
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/books#author_id>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://www.w3.org/ns/r2rml/books#title>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "title";
+          rr:termType rr:Literal;
+          rr:datatype xsd:string
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "book_id";
+          rr:datatype xsd:integer
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/books#book_id>
+    ] .
+
+<urn:MAPPING-ID2> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT \"books\".\"book_id\" AS \"books_book_id\", \"authors\".\"author_id\" AS \"authors_author_id\" FROM \"books\", \"authors\" WHERE \"books\".\"author_id\" = \"authors\".\"author_id\""
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:predicate <http://www.w3.org/ns/r2rml/books#ref-author_id>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:template "http://www.w3.org/ns/r2rml/authors/author_id={authors_author_id}";
+          rr:termType rr:IRI
+        ]
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:template "http://www.w3.org/ns/r2rml/books/book_id={books_book_id}";
+      rr:termType rr:IRI
+    ] .
+
+<urn:MAPPING-ID3> a rr:TriplesMap;
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "review_id";
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/reviews#review_id>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:integer;
+          rr:termType rr:Literal;
+          rr:column "rating"
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/reviews#rating>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:column "member_id";
+          rr:datatype xsd:integer;
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/reviews#member_id>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://www.w3.org/ns/r2rml/reviews#book_id>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "book_id";
+          rr:datatype xsd:integer
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:column "review_text";
+          rr:datatype xsd:string;
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/reviews#review_text>
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT * FROM \"reviews\""
+    ];
+  rr:subjectMap [ a rr:SubjectMap, rr:TermMap;
+      rr:class <http://www.w3.org/ns/r2rml/reviews>;
+      rr:termType rr:IRI;
+      rr:template "http://www.w3.org/ns/r2rml/reviews/review_id={review_id}"
+    ] .
+
+<urn:MAPPING-ID4> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT \"reviews\".\"review_id\" AS \"reviews_review_id\", \"books\".\"book_id\" AS \"books_book_id\" FROM \"reviews\", \"books\" WHERE \"reviews\".\"book_id\" = \"books\".\"book_id\""
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:termType rr:IRI;
+      rr:template "http://www.w3.org/ns/r2rml/reviews/review_id={reviews_review_id}"
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:predicate <http://www.w3.org/ns/r2rml/reviews#ref-book_id>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:IRI;
+          rr:template "http://www.w3.org/ns/r2rml/books/book_id={books_book_id}"
+        ]
+    ] .
+
+<urn:MAPPING-ID5> a rr:TriplesMap;
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:IRI;
+          rr:template "http://www.w3.org/ns/r2rml/members/member_id={members_member_id}"
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/reviews#ref-member_id>
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT \"reviews\".\"review_id\" AS \"reviews_review_id\", \"members\".\"member_id\" AS \"members_member_id\" FROM \"reviews\", \"members\" WHERE \"reviews\".\"member_id\" = \"members\".\"member_id\""
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:termType rr:IRI;
+      rr:template "http://www.w3.org/ns/r2rml/reviews/review_id={reviews_review_id}"
+    ] .
+
+<urn:MAPPING-ID6> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT * FROM \"loans\""
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:datatype xsd:integer;
+          rr:column "loan_id";
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/loans#loan_id>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:integer;
+          rr:termType rr:Literal;
+          rr:column "book_id"
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/loans#book_id>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://www.w3.org/ns/r2rml/loans#due_date>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:date;
+          rr:column "due_date"
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "loan_date";
+          rr:termType rr:Literal;
+          rr:datatype xsd:date
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/loans#loan_date>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://www.w3.org/ns/r2rml/loans#member_id>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:column "member_id";
+          rr:datatype xsd:integer;
+          rr:termType rr:Literal
+        ]
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:template "http://www.w3.org/ns/r2rml/loans/loan_id={loan_id}";
+      rr:termType rr:IRI;
+      rr:class <http://www.w3.org/ns/r2rml/loans>
+    ] .
+
+<urn:MAPPING-ID7> a rr:TriplesMap;
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:termType rr:IRI;
+      rr:template "http://www.w3.org/ns/r2rml/loans/loan_id={loans_loan_id}"
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT \"loans\".\"loan_id\" AS \"loans_loan_id\", \"books\".\"book_id\" AS \"books_book_id\" FROM \"loans\", \"books\" WHERE \"loans\".\"book_id\" = \"books\".\"book_id\""
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:predicate <http://www.w3.org/ns/r2rml/loans#ref-book_id>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:template "http://www.w3.org/ns/r2rml/books/book_id={books_book_id}";
+          rr:termType rr:IRI
+        ]
+    ] .
+
+<urn:MAPPING-ID8> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT \"loans\".\"loan_id\" AS \"loans_loan_id\", \"members\".\"member_id\" AS \"members_member_id\" FROM \"loans\", \"members\" WHERE \"loans\".\"member_id\" = \"members\".\"member_id\""
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:template "http://www.w3.org/ns/r2rml/loans/loan_id={loans_loan_id}";
+      rr:termType rr:IRI
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:predicate <http://www.w3.org/ns/r2rml/loans#ref-member_id>;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:IRI;
+          rr:template "http://www.w3.org/ns/r2rml/members/member_id={members_member_id}"
+        ]
+    ] .
+
+<urn:MAPPING-ID9> a rr:TriplesMap;
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "email";
+          rr:datatype xsd:string;
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/members#email>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "join_date";
+          rr:termType rr:Literal;
+          rr:datatype xsd:date
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/members#join_date>
+    ], [ a rr:PredicateObjectMap;
+      rr:predicate <http://www.w3.org/ns/r2rml/members#member_name>;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "member_name";
+          rr:datatype xsd:string
+        ]
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer;
+          rr:column "member_id"
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/members#member_id>
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT * FROM \"members\""
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:class <http://www.w3.org/ns/r2rml/members>;
+      rr:template "http://www.w3.org/ns/r2rml/members/member_id={member_id}";
+      rr:termType rr:IRI
+    ] .
+
+<urn:MAPPING-ID10> a rr:TriplesMap;
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT * FROM \"publishers\""
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:termType rr:IRI;
+      rr:class <http://www.w3.org/ns/r2rml/publishers>;
+      rr:template "http://www.w3.org/ns/r2rml/publishers/publisher_id={publisher_id}"
+    ];
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:TermMap, rr:ObjectMap;
+          rr:termType rr:Literal;
+          rr:column "publisher_id";
+          rr:datatype xsd:integer
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/publishers#publisher_id>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:string;
+          rr:column "headquarters_location"
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/publishers#headquarters_location>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "publisher_name";
+          rr:datatype xsd:string;
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/publishers#publisher_name>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:integer;
+          rr:column "establishment_year";
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/publishers#establishment_year>
+    ] .
+
+<urn:MAPPING-ID11> a rr:TriplesMap;
+  rr:predicateObjectMap [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "birth_year";
+          rr:termType rr:Literal;
+          rr:datatype xsd:integer
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/authors#birth_year>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:termType rr:Literal;
+          rr:datatype xsd:string;
+          rr:column "author_name"
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/authors#author_name>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:datatype xsd:string;
+          rr:termType rr:Literal;
+          rr:column "nationality"
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/authors#nationality>
+    ], [ a rr:PredicateObjectMap;
+      rr:objectMap [ a rr:ObjectMap, rr:TermMap;
+          rr:column "author_id";
+          rr:datatype xsd:integer;
+          rr:termType rr:Literal
+        ];
+      rr:predicate <http://www.w3.org/ns/r2rml/authors#author_id>
+    ];
+  rr:logicalTable [ a rr:R2RMLView;
+      rr:sqlQuery "SELECT * FROM \"authors\""
+    ];
+  rr:subjectMap [ a rr:TermMap, rr:SubjectMap;
+      rr:template "http://www.w3.org/ns/r2rml/authors/author_id={author_id}";
+      rr:termType rr:IRI;
+      rr:class <http://www.w3.org/ns/r2rml/authors>
+    ] .

@@ -1,0 +1,227 @@
+{
+  "relations" : [ {
+    "uniqueConstraints" : [ {
+      "name" : "books_pkey",
+      "determinants" : [ "\"book_id\"" ],
+      "isPrimaryKey" : true
+    } ],
+    "foreignKeys" : [ {
+      "name" : "books_author_id_fkey",
+      "from" : {
+        "relation" : [ "\"books\"" ],
+        "columns" : [ "\"author_id\"" ]
+      },
+      "to" : {
+        "relation" : [ "\"authors\"" ],
+        "columns" : [ "\"author_id\"" ]
+      }
+    } ],
+    "columns" : [ {
+      "name" : "\"book_id\"",
+      "isNullable" : false,
+      "datatype" : "serial"
+    }, {
+      "name" : "\"title\"",
+      "isNullable" : false,
+      "datatype" : "varchar(255)"
+    }, {
+      "name" : "\"author_id\"",
+      "isNullable" : true,
+      "datatype" : "int4"
+    }, {
+      "name" : "\"genre\"",
+      "isNullable" : true,
+      "datatype" : "varchar(100)"
+    }, {
+      "name" : "\"published_year\"",
+      "isNullable" : true,
+      "datatype" : "int4"
+    } ],
+    "name" : [ "\"books\"" ],
+    "otherNames" : [ [ "\"public\"", "\"books\"" ] ]
+  }, {
+    "uniqueConstraints" : [ {
+      "name" : "reviews_pkey",
+      "determinants" : [ "\"review_id\"" ],
+      "isPrimaryKey" : true
+    } ],
+    "foreignKeys" : [ {
+      "name" : "reviews_book_id_fkey",
+      "from" : {
+        "relation" : [ "\"reviews\"" ],
+        "columns" : [ "\"book_id\"" ]
+      },
+      "to" : {
+        "relation" : [ "\"books\"" ],
+        "columns" : [ "\"book_id\"" ]
+      }
+    }, {
+      "name" : "reviews_member_id_fkey",
+      "from" : {
+        "relation" : [ "\"reviews\"" ],
+        "columns" : [ "\"member_id\"" ]
+      },
+      "to" : {
+        "relation" : [ "\"members\"" ],
+        "columns" : [ "\"member_id\"" ]
+      }
+    } ],
+    "columns" : [ {
+      "name" : "\"review_id\"",
+      "isNullable" : false,
+      "datatype" : "serial"
+    }, {
+      "name" : "\"book_id\"",
+      "isNullable" : true,
+      "datatype" : "int4"
+    }, {
+      "name" : "\"member_id\"",
+      "isNullable" : true,
+      "datatype" : "int4"
+    }, {
+      "name" : "\"rating\"",
+      "isNullable" : true,
+      "datatype" : "int4"
+    }, {
+      "name" : "\"review_text\"",
+      "isNullable" : true,
+      "datatype" : "text(2147483647)"
+    } ],
+    "name" : [ "\"reviews\"" ],
+    "otherNames" : [ [ "\"public\"", "\"reviews\"" ] ]
+  }, {
+    "uniqueConstraints" : [ {
+      "name" : "loans_pkey",
+      "determinants" : [ "\"loan_id\"" ],
+      "isPrimaryKey" : true
+    } ],
+    "foreignKeys" : [ {
+      "name" : "loans_book_id_fkey",
+      "from" : {
+        "relation" : [ "\"loans\"" ],
+        "columns" : [ "\"book_id\"" ]
+      },
+      "to" : {
+        "relation" : [ "\"books\"" ],
+        "columns" : [ "\"book_id\"" ]
+      }
+    }, {
+      "name" : "loans_member_id_fkey",
+      "from" : {
+        "relation" : [ "\"loans\"" ],
+        "columns" : [ "\"member_id\"" ]
+      },
+      "to" : {
+        "relation" : [ "\"members\"" ],
+        "columns" : [ "\"member_id\"" ]
+      }
+    } ],
+    "columns" : [ {
+      "name" : "\"loan_id\"",
+      "isNullable" : false,
+      "datatype" : "serial"
+    }, {
+      "name" : "\"book_id\"",
+      "isNullable" : true,
+      "datatype" : "int4"
+    }, {
+      "name" : "\"member_id\"",
+      "isNullable" : true,
+      "datatype" : "int4"
+    }, {
+      "name" : "\"loan_date\"",
+      "isNullable" : true,
+      "datatype" : "date"
+    }, {
+      "name" : "\"due_date\"",
+      "isNullable" : true,
+      "datatype" : "date"
+    } ],
+    "name" : [ "\"loans\"" ],
+    "otherNames" : [ [ "\"public\"", "\"loans\"" ] ]
+  }, {
+    "uniqueConstraints" : [ {
+      "name" : "members_pkey",
+      "determinants" : [ "\"member_id\"" ],
+      "isPrimaryKey" : true
+    } ],
+    "columns" : [ {
+      "name" : "\"member_id\"",
+      "isNullable" : false,
+      "datatype" : "serial"
+    }, {
+      "name" : "\"member_name\"",
+      "isNullable" : false,
+      "datatype" : "varchar(100)"
+    }, {
+      "name" : "\"email\"",
+      "isNullable" : true,
+      "datatype" : "varchar(100)"
+    }, {
+      "name" : "\"join_date\"",
+      "isNullable" : true,
+      "datatype" : "date"
+    } ],
+    "name" : [ "\"members\"" ],
+    "otherNames" : [ [ "\"public\"", "\"members\"" ] ]
+  }, {
+    "uniqueConstraints" : [ {
+      "name" : "publishers_pkey",
+      "determinants" : [ "\"publisher_id\"" ],
+      "isPrimaryKey" : true
+    } ],
+    "columns" : [ {
+      "name" : "\"publisher_id\"",
+      "isNullable" : false,
+      "datatype" : "serial"
+    }, {
+      "name" : "\"publisher_name\"",
+      "isNullable" : false,
+      "datatype" : "varchar(100)"
+    }, {
+      "name" : "\"headquarters_location\"",
+      "isNullable" : true,
+      "datatype" : "varchar(255)"
+    }, {
+      "name" : "\"establishment_year\"",
+      "isNullable" : true,
+      "datatype" : "int4"
+    } ],
+    "name" : [ "\"publishers\"" ],
+    "otherNames" : [ [ "\"public\"", "\"publishers\"" ] ]
+  }, {
+    "uniqueConstraints" : [ {
+      "name" : "authors_pkey",
+      "determinants" : [ "\"author_id\"" ],
+      "isPrimaryKey" : true
+    } ],
+    "columns" : [ {
+      "name" : "\"author_id\"",
+      "isNullable" : false,
+      "datatype" : "serial"
+    }, {
+      "name" : "\"author_name\"",
+      "isNullable" : false,
+      "datatype" : "varchar(100)"
+    }, {
+      "name" : "\"nationality\"",
+      "isNullable" : true,
+      "datatype" : "varchar(100)"
+    }, {
+      "name" : "\"birth_year\"",
+      "isNullable" : true,
+      "datatype" : "int4"
+    } ],
+    "name" : [ "\"authors\"" ],
+    "otherNames" : [ [ "\"public\"", "\"authors\"" ] ]
+  } ],
+  "metadata" : {
+    "dbmsProductName" : "PostgreSQL",
+    "dbmsVersion" : "16.1",
+    "driverName" : "PostgreSQL JDBC Driver",
+    "driverVersion" : "42.7.1",
+    "quotationString" : "\"",
+    "extractionTime" : "2024-02-05T22:14:44",
+    "idFactoryType" : "POSTGRESQL"
+  }
+}

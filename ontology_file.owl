@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/ns/r2rml#"
+     xml:base="http://www.w3.org/ns/r2rml"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.w3.org/ns/r2rml"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/books#ref-author_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/r2rml/books#ref-author_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/loans#ref-book_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/r2rml/loans#ref-book_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/loans#ref-member_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/r2rml/loans#ref-member_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/reviews#ref-book_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/r2rml/reviews#ref-book_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/reviews#ref-member_id -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/r2rml/reviews#ref-member_id"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/authors#author_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/authors#author_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/authors#author_name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/authors#author_name"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/authors#birth_year -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/authors#birth_year"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/authors#nationality -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/authors#nationality"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/books#author_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/books#author_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/books#book_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/books#book_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/books#genre -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/books#genre"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/books#published_year -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/books#published_year"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/books#title -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/books#title"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/loans#book_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/loans#book_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/loans#due_date -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/loans#due_date"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/loans#loan_date -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/loans#loan_date"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/loans#loan_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/loans#loan_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/loans#member_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/loans#member_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/members#email -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/members#email"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/members#join_date -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/members#join_date"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/members#member_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/members#member_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/members#member_name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/members#member_name"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/publishers#establishment_year -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/publishers#establishment_year"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/publishers#headquarters_location -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/publishers#headquarters_location"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/publishers#publisher_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/publishers#publisher_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/publishers#publisher_name -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/publishers#publisher_name"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/reviews#book_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/reviews#book_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/reviews#member_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/reviews#member_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/reviews#rating -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/reviews#rating"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/reviews#review_id -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/reviews#review_id"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/reviews#review_text -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/r2rml/reviews#review_text"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/authors -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/r2rml/authors"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/books -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/r2rml/books"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/loans -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/r2rml/loans"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/members -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/r2rml/members"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/publishers -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/r2rml/publishers"/>
+    
+
+
+    <!-- http://www.w3.org/ns/r2rml/reviews -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/r2rml/reviews"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.20) https://github.com/owlcs/owlapi/ -->
+
+

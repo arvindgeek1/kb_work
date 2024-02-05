@@ -1,0 +1,53 @@
+[PrefixDeclaration]
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+owl:		http://www.w3.org/2002/07/owl#
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+
+[MappingDeclaration] @collection [[
+mappingId	MAPPING-ID1
+target		<http://www.w3.org/ns/r2rml/books/book_id={book_id}> a <http://www.w3.org/ns/r2rml/books> ; <http://www.w3.org/ns/r2rml/books#book_id> {book_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/books#title> {title}^^xsd:string ; <http://www.w3.org/ns/r2rml/books#author_id> {author_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/books#genre> {genre}^^xsd:string ; <http://www.w3.org/ns/r2rml/books#published_year> {published_year}^^xsd:integer . 
+source		SELECT * FROM "books"
+
+mappingId	MAPPING-ID2
+target		<http://www.w3.org/ns/r2rml/books/book_id={books_book_id}> <http://www.w3.org/ns/r2rml/books#ref-author_id> <http://www.w3.org/ns/r2rml/authors/author_id={authors_author_id}> . 
+source		SELECT "books"."book_id" AS "books_book_id", "authors"."author_id" AS "authors_author_id" FROM "books", "authors" WHERE "books"."author_id" = "authors"."author_id"
+
+mappingId	MAPPING-ID3
+target		<http://www.w3.org/ns/r2rml/reviews/review_id={review_id}> a <http://www.w3.org/ns/r2rml/reviews> ; <http://www.w3.org/ns/r2rml/reviews#review_id> {review_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/reviews#book_id> {book_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/reviews#member_id> {member_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/reviews#rating> {rating}^^xsd:integer ; <http://www.w3.org/ns/r2rml/reviews#review_text> {review_text}^^xsd:string . 
+source		SELECT * FROM "reviews"
+
+mappingId	MAPPING-ID4
+target		<http://www.w3.org/ns/r2rml/reviews/review_id={reviews_review_id}> <http://www.w3.org/ns/r2rml/reviews#ref-book_id> <http://www.w3.org/ns/r2rml/books/book_id={books_book_id}> . 
+source		SELECT "reviews"."review_id" AS "reviews_review_id", "books"."book_id" AS "books_book_id" FROM "reviews", "books" WHERE "reviews"."book_id" = "books"."book_id"
+
+mappingId	MAPPING-ID5
+target		<http://www.w3.org/ns/r2rml/reviews/review_id={reviews_review_id}> <http://www.w3.org/ns/r2rml/reviews#ref-member_id> <http://www.w3.org/ns/r2rml/members/member_id={members_member_id}> . 
+source		SELECT "reviews"."review_id" AS "reviews_review_id", "members"."member_id" AS "members_member_id" FROM "reviews", "members" WHERE "reviews"."member_id" = "members"."member_id"
+
+mappingId	MAPPING-ID6
+target		<http://www.w3.org/ns/r2rml/loans/loan_id={loan_id}> a <http://www.w3.org/ns/r2rml/loans> ; <http://www.w3.org/ns/r2rml/loans#loan_id> {loan_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/loans#book_id> {book_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/loans#member_id> {member_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/loans#loan_date> {loan_date}^^xsd:date ; <http://www.w3.org/ns/r2rml/loans#due_date> {due_date}^^xsd:date . 
+source		SELECT * FROM "loans"
+
+mappingId	MAPPING-ID7
+target		<http://www.w3.org/ns/r2rml/loans/loan_id={loans_loan_id}> <http://www.w3.org/ns/r2rml/loans#ref-book_id> <http://www.w3.org/ns/r2rml/books/book_id={books_book_id}> . 
+source		SELECT "loans"."loan_id" AS "loans_loan_id", "books"."book_id" AS "books_book_id" FROM "loans", "books" WHERE "loans"."book_id" = "books"."book_id"
+
+mappingId	MAPPING-ID8
+target		<http://www.w3.org/ns/r2rml/loans/loan_id={loans_loan_id}> <http://www.w3.org/ns/r2rml/loans#ref-member_id> <http://www.w3.org/ns/r2rml/members/member_id={members_member_id}> . 
+source		SELECT "loans"."loan_id" AS "loans_loan_id", "members"."member_id" AS "members_member_id" FROM "loans", "members" WHERE "loans"."member_id" = "members"."member_id"
+
+mappingId	MAPPING-ID9
+target		<http://www.w3.org/ns/r2rml/members/member_id={member_id}> a <http://www.w3.org/ns/r2rml/members> ; <http://www.w3.org/ns/r2rml/members#member_id> {member_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/members#member_name> {member_name}^^xsd:string ; <http://www.w3.org/ns/r2rml/members#email> {email}^^xsd:string ; <http://www.w3.org/ns/r2rml/members#join_date> {join_date}^^xsd:date . 
+source		SELECT * FROM "members"
+
+mappingId	MAPPING-ID10
+target		<http://www.w3.org/ns/r2rml/publishers/publisher_id={publisher_id}> a <http://www.w3.org/ns/r2rml/publishers> ; <http://www.w3.org/ns/r2rml/publishers#publisher_id> {publisher_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/publishers#publisher_name> {publisher_name}^^xsd:string ; <http://www.w3.org/ns/r2rml/publishers#headquarters_location> {headquarters_location}^^xsd:string ; <http://www.w3.org/ns/r2rml/publishers#establishment_year> {establishment_year}^^xsd:integer . 
+source		SELECT * FROM "publishers"
+
+mappingId	MAPPING-ID11
+target		<http://www.w3.org/ns/r2rml/authors/author_id={author_id}> a <http://www.w3.org/ns/r2rml/authors> ; <http://www.w3.org/ns/r2rml/authors#author_id> {author_id}^^xsd:integer ; <http://www.w3.org/ns/r2rml/authors#author_name> {author_name}^^xsd:string ; <http://www.w3.org/ns/r2rml/authors#nationality> {nationality}^^xsd:string ; <http://www.w3.org/ns/r2rml/authors#birth_year> {birth_year}^^xsd:integer . 
+source		SELECT * FROM "authors"
+]]
+
